@@ -1,0 +1,32 @@
+version: '3.3'
+
+services: 
+    backend:
+        build: 
+            context: ../../code/backend
+            dockerfile: ./Dockerfile
+        ports: 
+            - "3000:3000"
+        networks: 
+            - workshop
+    frontend:
+        build: 
+            context: ../../code/frontend
+            dockerfile: ./Dockerfile-e2e-build
+        ports: 
+            - "4200:80"
+        depends_on: 
+            - backend
+        networks: 
+            - workshop
+    e2e:
+        build: 
+            context: ../../code/frontend
+            dockerfile: ./Dockerfile-e2e
+        networks: 
+            - workshop
+networks:
+    workshop:
+        ipam:
+            config:
+                - subnet: 192.168.190.0/28

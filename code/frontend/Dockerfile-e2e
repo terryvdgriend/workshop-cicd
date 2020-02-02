@@ -1,0 +1,9 @@
+FROM terryvdgriend/node-chrome-79
+
+COPY . /src/
+
+WORKDIR /src
+
+RUN npm install
+
+ENTRYPOINT npm run e2e

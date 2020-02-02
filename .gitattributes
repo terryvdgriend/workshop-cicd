@@ -1,0 +1,3 @@
+#If sh files do not have LF line endings when committed then docker containers will break on the scripts.
+* text=auto
+*.sh text eol=lf
